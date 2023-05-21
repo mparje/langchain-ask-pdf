@@ -7,6 +7,10 @@ from langchain.vectorstores import FAISS
 from langchain.chains.question_answering import load_qa_chain
 from langchain.llms import OpenAI
 from langchain.callbacks import get_openai_callback
+import os
+import openai
+
+OpenAIEmbedddings = os.getenv("OPENAI_API_KEY")
 
 
 
@@ -35,7 +39,7 @@ def main():
       chunks = text_splitter.split_text(text)
       
       # create embeddings
-      embeddings = OpenAIEmbeddings(api_key)
+      embeddings = OpenAIEmbeddings( )
       knowledge_base = FAISS.from_texts(chunks, embeddings)
       
       # show user input
